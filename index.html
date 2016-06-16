@@ -10,16 +10,16 @@
 
 	<body>
 	
-	<button data-animal="cat" class="btn btn-primary">Cat</button>
-    <button data-animal="dog" class="btn btn-primary">Dog</button>
-    <button data-animal="bird" class="btn btn-primary">Bird</button>
-    <button data-animal="lion" class="btn btn-primary">Lion</button>
-    <button data-animal="panda" class="btn btn-primary">Panda</button>
-    <button data-animal="dolphin" class="btn btn-primary">Dolphin</button>
-    <button data-animal="shark" class="btn btn-primary">Shark</button>
-    <button data-animal="monkey" class="btn btn-primary">Monkey</button>
-    <button data-animal="hedgehog" class="btn btn-primary">Hedgehog</button>
-    <button data-animal="bear" class="btn btn-primary">Bear</button>
+	<button data-animal="cat" class="btn btn-primary" data-state="still">Cat</button>
+    <button data-animal="dog" class="btn btn-primary" data-state="still">Dog</button>
+    <button data-animal="bird" class="btn btn-primary" data-state="still">Bird</button>
+    <button data-animal="lion" class="btn btn-primary" data-state="still">Lion</button>
+    <button data-animal="panda" class="btn btn-primary" data-state="still">Panda</button>
+    <button data-animal="dolphin" class="btn btn-primary" data-state="still">Dolphin</button>
+    <button data-animal="shark" class="btn btn-primary" data-state="still">Shark</button>
+    <button data-animal="monkey" class="btn btn-primary" data-state="still">Monkey</button>
+    <button data-animal="hedgehog" class="btn btn-primary" data-state="still">Hedgehog</button>
+    <button data-animal="bear" class="btn btn-primary" data-state="still">Bear</button>
 
     
     <div id="gifsAppearHere">
@@ -30,12 +30,15 @@
 
     $('button').on('click', function() {
 
+    	var state = $(this).attr('data-state'); 
+
         var animal = $(this).data('animal');
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
         $.ajax({
                 url: queryURL,
-                method: 'GET'
+                method: 'GET',
+                fixed_height_still: queryURL,
             })
 
             .done(function(response) {
